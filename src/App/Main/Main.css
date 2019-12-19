@@ -1,0 +1,19 @@
+.Main {
+    display: block;
+    width: 35%;
+    height: auto;
+    /* border:1px solid blue; */    
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #7892ce6a;
+    padding-top: 0%;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #3f51b5;
+    margin-bottom: 2%;
+    text-decoration: none;
+  }
+  
+  

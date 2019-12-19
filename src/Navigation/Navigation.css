@@ -1,0 +1,16 @@
+.navbar {
+    width: 50%;
+    background-color: red;
+    position: fixed;
+  }
+  
+ .navbar a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav-title{
+    text-align: center;
+    margin: auto;
+    flex-grow: 1;
+  }

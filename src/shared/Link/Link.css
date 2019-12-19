@@ -1,0 +1,38 @@
+.listItem {
+    color: blue;
+    text-decoration: none;
+    display: block;
+    height: auto;
+    margin-right: 2%;
+    cursor: pointer;
+    padding: 0.5%;
+    margin: 0.1%;
+  }
+  
+  footer .listItem:nth-child(1) {
+    margin-left: 1%;
+  }
+  
+    .listItem:not(:first-child) {
+    padding: 1%;
+    margin-top: 0.5%;
+  }
+  
+  footer .listItem:not(:last-child) {
+    padding: 2%;
+    margin-top: 1.5%;
+    border-bottom: 2px solid #234465;
+  }
+  
+  .listItem:hover {
+    border-top: none;
+  }
+  
+  footer .listItem:hover {
+    border-bottom: none;
+    border-top: 2px solid #234465;
+    font-weight: bold;
+  }
+  
+
+  

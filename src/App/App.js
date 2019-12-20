@@ -9,6 +9,7 @@ import Logout from "../Logout/Logout";
 import CreateTask from "../publications/CreateTask/CreateTask"
 import Store, { StoreContext } from "../Store/Store";
 import { loginSuccess } from "../Store/actions";
+import Profile from '../Profile/Profile';
 
 function render(title, Cmp) {
   
@@ -48,23 +49,25 @@ function App() {
         <Auth>
           <StoreContext.Consumer>
             {({ state }) => {
-                console.log(state);
+               
                 const { user } = state;
                 const isLogged = !!state.user;
+                console.log(user);
+                
 
             return user === undefined ? (
               <div>Loading...</div>
             ) : (
               <div className="App">
-                  <Navigation  isLogged={isLogged} user={user} />
+                  <Navigation  isLogged={isLogged}  />
                   <div className="container">
                     <Switch>
                       <Route path="/" exact>
-                          <Redirect to="/tasks" />
+                      {!!isLogged ? () =><Redirect to="/tasks"/> :() => <Redirect to="/"/>}
                       </Route>
                       <Route
                         path="/tasks"
-                        render={render("Tasks", CreateTask, { isLogged })}
+                        render={!!isLogged ? render("Tasks", CreateTask, {state}) : () => <Redirect to="/" />}
                       />
                       <Route
                         path="/login"
@@ -88,6 +91,12 @@ function App() {
                             : () => <Redirect to="/" />
                         }
                       />
+                      {!!isLogged && (
+                      <Route
+                        path="/profile"
+                        render={() => (<Profile user={user}></Profile>)}
+                      />
+                      )}
                     </Switch>
                   </div> 
               </div>

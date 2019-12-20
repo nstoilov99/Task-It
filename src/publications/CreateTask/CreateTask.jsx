@@ -1,32 +1,30 @@
 import React from 'react';
 import taskService from '../../services/task-service';
 import './CreateTask.css';
+import Tasks from '../Tasks/Tasks';
 
-const CreatePost = ({ history }) => {
+const CreatePost = ({ history, state}) => {
   const descriptionRef = React.useRef();
   const titleRef = React.useRef();
-  const levelRef = React.useRef();
   const difficultyRef = React.useRef();
   const expirianceRef = React.useRef();
-  const createPost = React.useCallback((e) => {
+  const createPost = React.useCallback((e) => {   
+    console.log(state);
+     
     e.preventDefault();
     const desc = descriptionRef.current.value;
     const title = titleRef.current.value;
-    const level = levelRef.current.value;
     const difficulty = difficultyRef.current.value;
     const expiriance = expirianceRef.current.value;
-    taskService.create({title: title, levelRequired: level, difficulty: difficulty, expiriance: expiriance, description: desc}).then(() => {
+    taskService.create({title: title, difficulty: difficulty, expiriance: expiriance, description: desc}).then(() => {
       history.push('/');
     });
-  }, [descriptionRef, history]);
+  }, []);
 
   return <div className="container">
   <form action="/action_page.php">
     <label>Title</label>
     <input type="text" ref={titleRef} placeholder="Your name title.."/>
-
-    <label>Level required</label>
-    <input type="number" ref={levelRef} placeholder="Level required.."/>
 
     <label>Difficulty</label>
     <select name="difficulty" ref={difficultyRef}>
@@ -43,6 +41,7 @@ const CreatePost = ({ history }) => {
 
     <input type="submit"onClick={createPost}/>
   </form>
+  <Tasks ></Tasks>
 </div>
 
 }

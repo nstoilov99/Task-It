@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Navigation({ isLogged, user}) {
+export default function Navigation({isLogged}) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -44,9 +44,8 @@ export default function Navigation({ isLogged, user}) {
       <AppBar className="navbar" position="static">
         <Toolbar>
           <ButtonWithMenu title={<MenuIcon />}>     
-            <MenuItem>Test</MenuItem>
-            <MenuItem>Test</MenuItem>
-            <MenuItem>Tasks</MenuItem>
+
+            {!!isLogged &&<MenuItem>><Link to="/tasks">Tasks</Link></MenuItem>}
             {!isLogged &&<MenuItem><Link to="/login">Login</Link></MenuItem>}
             {!isLogged &&<MenuItem ><Link to="/register">Register</Link></MenuItem>}
           </ButtonWithMenu>
@@ -82,8 +81,7 @@ export default function Navigation({ isLogged, user}) {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem><Link to="/profile">My Profile</Link></MenuItem>
               </Menu>
             </div>
           )}

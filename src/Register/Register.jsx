@@ -66,7 +66,10 @@ const initialFormState = {
   email: '',
   username: '',
   password: '',
-  rePassword: ''
+  rePassword: '',
+  level: 0,
+  expiriance: 0,
+  role:''
 };
 
 const schema = yup.object({

@@ -27,10 +27,6 @@ export default function Navigation({isLogged}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  // const handleChange = event => {
-  //   setAuth(event.target.checked);
-  // };
-
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -45,7 +41,7 @@ export default function Navigation({isLogged}) {
         <Toolbar>
           <ButtonWithMenu title={<MenuIcon />}>     
 
-            {!!isLogged &&<MenuItem>><Link to="/tasks">Tasks</Link></MenuItem>}
+            {!!isLogged &&<MenuItem><Link to="/tasks">Tasks</Link></MenuItem>}
             {!isLogged &&<MenuItem><Link to="/login">Login</Link></MenuItem>}
             {!isLogged &&<MenuItem ><Link to="/register">Register</Link></MenuItem>}
           </ButtonWithMenu>

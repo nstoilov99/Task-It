@@ -7,13 +7,14 @@ import './Task.css'
 import userService from '../../../services/user-service';
 import postService from '../../../services/task-service';
 
-export default function Task({title, difficulty, expiriance, description, taskId}) {
+export default function Task({title, difficulty, expiriance, description, taskId, history}) {
 
     const updateExp = (event) => {   
         event.preventDefault();
         
         userService.update({expiriance});
         postService.delete(taskId);
+        history.push("/")
     }
 
   return (
